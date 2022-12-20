@@ -1,0 +1,40 @@
+## Deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SEO-eks-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: SEO-eks-app
+  template:
+    metadata:
+      labels:
+        app: SEO-eks-app
+    spec:
+      containers:
+      - name: SEO-eks-app
+        image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:+':V'+'$BUILD_NUMBER'
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: SEO-eks-app
+    k8s-app: SEO-eks-app
+  name: SEO-eks-app
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8082
+  type: LoadBalancer
+  selector:
+    app: SEO-eks-app
