@@ -3,11 +3,11 @@ pipeline {
     tools{
         maven 'M2_HOME'
     }
-    /***environment {
+    environment {
        registry = '317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
        registryCredential = 'jenkins-ecr-user'
        dockerimage = ''
-    }***/
+    }
         
      /***environment {
         NEXUS_VERSION = "nexus3"
@@ -86,13 +86,13 @@ pipeline {
         
        
         
-       /***stage('Build Image') {
+       stage('Build Image') {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
                 } 
             }
-        }***/
+        }
         
         /***stage('Deploy image') {
             steps{
@@ -105,14 +105,14 @@ pipeline {
         }***/
         
          // Uploading Docker images into AWS ECR
-       /***stage('Pushing to ECR') {
+       stage('Pushing to ECR') {
             steps{
                 script {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 317396387403.dkr.ecr.us-east-1.amazonaws.com'
                     sh "docker push 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job" + ':V'+ '$BUILD_NUMBER'
                 }
             }
-        }***/
+        }
         
      //deploy the image that is in ECR to our EKS cluster
         /***stage ("Kube Deploy") {
