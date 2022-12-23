@@ -40,11 +40,11 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        /***stage('Test') {
             steps {
                 sh 'mvn test'
             }
-        }
+        }***/
        
        /***stage("Publish to Nexus Repository Manager") {
             steps {
