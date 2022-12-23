@@ -118,7 +118,7 @@ pipeline {
         /***stage ("Kube Deploy") {
             steps {
                 withKubeConfig([credentialsId: 'eks_credential', serverUrl: '']) {
-                 sh "kubectl apply -f eks_deploy_from_ecr.yaml"
+                 sh "kubectl apply -f deployment.yml"
                 }
             }
         }***/
