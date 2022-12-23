@@ -19,22 +19,21 @@ spec:
         image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:V18
         imagePullPolicy: Always
         ports:
-        - containerPort: 8082
+        - containerPort: 80
 # service type loadbalancer       
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  name: seo-eks-app
   labels:
     app: seo-eks-app
-    k8s-app: seo-eks-app
-  name: seo-eks-app
 spec:
   ports:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8082
+    targetPort: 80
   type: LoadBalancer
   selector:
     app: seo-eks-app
