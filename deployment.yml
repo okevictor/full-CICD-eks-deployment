@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: seo-eks-app
-        image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:V21
+        image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:V22
         imagePullPolicy: Always
         ports:
         - containerPort: 80
