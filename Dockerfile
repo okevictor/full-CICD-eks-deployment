@@ -4,7 +4,7 @@ COPY ./web-consult-app/* /usr/local/apache2/htdocs/
 #RUN yum update -y
 # Maintainer 
 #MAINTAINER "okevictor.t@gmail.com" 
-EXPOSE 8085
+#EXPOSE 8085
 #CMD ["-DFOREGROUND"]
 
 
