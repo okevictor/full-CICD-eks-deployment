@@ -30,7 +30,7 @@ pipeline {
             }
         }***/
         
-        stage('Code Build') {
+        /***stage('Code Build') {
             steps {
                 sh 'mvn clean'
                 sh 'mvn install'
@@ -38,7 +38,7 @@ pipeline {
                 
                 //this is packing the artifacts
             }
-        }
+        }***/
         
         /***stage('Test') {
             steps {
