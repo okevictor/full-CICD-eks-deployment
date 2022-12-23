@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: seo-eks-app
-        image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:V26
+        image: 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job:V27
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 80
 # service type loadbalancer       
 ---
 apiVersion: v1
@@ -33,7 +33,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8085
+    targetPort: 80
   type: LoadBalancer
   selector:
     app: seo-eks-app
